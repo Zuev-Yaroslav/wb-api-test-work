@@ -53,10 +53,10 @@ root        37  1.1  0.6  78184 48600 pts/0    S+   11:58   0:00 php artisan sch
 
 Команды
 ```` bash
-php artisan database:get-fresh-incomes {page} {token} - получить свежие данные о доходах
-php artisan database:get-fresh-orders {page} {token} - получить свежие данные о заказах
-php artisan database:get-fresh-sales {page} {token} - получить свежие данные о продажах
-php artisan database:get-fresh-stocks {page} {token} - получить свежие данные о складах
+php artisan database:get-fresh-incomes {page} {token} - получить свежие данные о доходах по последней новой дате
+php artisan database:get-fresh-orders {page} {token} - получить свежие данные о заказах по последней новой дате
+php artisan database:get-fresh-sales {page} {token} - получить свежие данные о продажах по последней новой дате
+php artisan database:get-fresh-stocks {page} {token} - получить свежие данные о складах по последней новой дате
 
 php artisan store:company {--name=} - создать информацию о компании
 php artisan store:api-service {--name=} - создать информацию об апи сервисе
