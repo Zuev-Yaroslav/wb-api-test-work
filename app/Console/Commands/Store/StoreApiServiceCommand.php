@@ -34,7 +34,7 @@ class StoreApiServiceCommand extends Command
         ]);
 
         $apiService = ApiService::create($options);
-
+        $this->info('Data was saved');
         dump($apiService->toArray());
     }
 }

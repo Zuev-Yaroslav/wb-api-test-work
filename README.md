@@ -58,10 +58,14 @@ php artisan database:get-fresh-orders {page} {token} - получить свеж
 php artisan database:get-fresh-sales {page} {token} - получить свежие данные о продажах
 php artisan database:get-fresh-stocks {page} {token} - получить свежие данные о складах
 
-php artisan store:account {--name=} {--api_token_id=} {--company_id=} - создать информацию об аккаунте
+php artisan store:company {--name=} - создать информацию о компании
 php artisan store:api-service {--name=} - создать информацию об апи сервисе
-php artisan store:api-token {--token=} {--token_type_id=} - создать информацию о токене
-php artisan store:company {--name=} - создать информацию о компании
 php artisan store:token-type {--name=} {--api_service_id=} - создать информацию о типе токене
-php artisan store:company {--name=} - создать информацию о компании
+php artisan store:api-token {--token=} {--token_type_id=} - создать информацию о токене
+php artisan store:account {--name=} {--api_token_id=} {--company_id=} - создать информацию об аккаунте
+
+php artisan destroy:destroy-income {id} {token} - удлить информацию о доходе
+php artisan destroy:destroy-order {id} {token} - удлить информацию о заказе
+php artisan destroy:destroy-sale {id} {token} - удлить информацию о продаже
+php artisan destroy:destroy-stock {id} {token} - удлить информацию о складе
 ````

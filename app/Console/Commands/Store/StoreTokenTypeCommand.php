@@ -35,7 +35,7 @@ class StoreTokenTypeCommand extends Command
         ]);
 
         $tokenType = TokenType::create($options);
-
+        $this->info('Data was saved');
         dump($tokenType->toArray());
     }
 }

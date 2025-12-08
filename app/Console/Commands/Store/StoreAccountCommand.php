@@ -36,7 +36,7 @@ class StoreAccountCommand extends Command
         ]);
 
         $account = Account::create($options);
-
+        $this->info('Data was saved');
         dump($account->toArray());
     }
 }

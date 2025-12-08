@@ -34,7 +34,7 @@ class StoreCompanyCommand extends Command
         ]);
 
         $company = Company::create($options);
-
+        $this->info('Data was saved');
         dump($company->toArray());
 
     }
