@@ -25,6 +25,10 @@ php artisan migrate
 ```` bash
 php artisan seed
 ````
+- Потом создать компании, аккаунты и просвоить account_id всем таблицам
+```` bash
+php artisan after-migrations:set-account-id-in-tables
+````
 
 - Запустить schedule:work и закрыть данный терминал, чтобы задача работала на фоне
 ```` bash
@@ -46,3 +50,18 @@ root        37  1.1  0.6  78184 48600 pts/0    S+   11:58   0:00 php artisan sch
 - orders - заказы
 - sales - продажи
 - stocks - склады
+
+Команды
+```` bash
+php artisan database:get-fresh-incomes {page} {token} - получить свежие данные о доходах
+php artisan database:get-fresh-orders {page} {token} - получить свежие данные о заказах
+php artisan database:get-fresh-sales {page} {token} - получить свежие данные о продажах
+php artisan database:get-fresh-stocks {page} {token} - получить свежие данные о складах
+
+php artisan store:account {--name=} {--api_token_id=} {--company_id=} - создать информацию об аккаунте
+php artisan store:api-service {--name=} - создать информацию об апи сервисе
+php artisan store:api-token {--token=} {--token_type_id=} - создать информацию о токене
+php artisan store:company {--name=} - создать информацию о компании
+php artisan store:token-type {--name=} {--api_service_id=} - создать информацию о типе токене
+php artisan store:company {--name=} - создать информацию о компании
+````
