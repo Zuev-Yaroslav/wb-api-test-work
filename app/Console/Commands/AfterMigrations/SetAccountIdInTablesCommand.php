@@ -35,9 +35,14 @@ class SetAccountIdInTablesCommand extends Command
     {
         $choice = $this->choice(
             'Choose model.',
-            ['Stock', 'Income', 'Order', 'Sale'],
+            ['Stock', 'Income', 'Order', 'Sale', 'All'],
         );
         $accountIds = Account::all()->pluck('id');
+        if ($accountIds->isEmpty()) {
+            $this->error('Accounts is not found');
+            return;
+        }
+
         switch ($choice) {
             case 'Stock':
                 $this->info('start this stocks process');
