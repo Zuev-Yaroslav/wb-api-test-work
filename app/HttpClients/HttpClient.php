@@ -2,6 +2,7 @@
 
 namespace App\HttpClients;
 
+use App\Models\Account;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Collection;
@@ -49,6 +50,8 @@ abstract class HttpClient
     }
     public function saveAllToDb(array $queryParams, string $model) : void
     {
+        $accountIds = Account::all()->pluck('id');
+
         for ($i = 1; true; $i++) {
             $queryParams['page'] = $i;
             $data = $this->index($queryParams);
@@ -61,7 +64,10 @@ abstract class HttpClient
                 dump('No data in ' . $i . ' page');
                 break;
             }
-            $items->each(function ($item) use ($model) {
+            $items->each(function ($item) use ($model, $accountIds) {
+                if ($accountIds->isNotEmpty()) {
+                    $item['account_id'] = $accountIds->random();
+                }
                 $model::create($item);
             });
             dump($model . ' records in page ' . $i . ' was saved successfully');

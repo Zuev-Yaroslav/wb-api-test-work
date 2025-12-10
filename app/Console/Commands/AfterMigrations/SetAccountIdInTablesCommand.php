@@ -46,25 +46,25 @@ class SetAccountIdInTablesCommand extends Command
         switch ($choice) {
             case 'Stock':
                 $this->info('start this stocks process');
-                $stocks = Stock::latestDate()->get();
+                $stocks = Stock::whereNull('account_id')->latestDate()->get();
                 $this->setAccountIdInTables($stocks, $accountIds);
                 $this->info("\n" . 'Done');
                 break;
             case 'Income':
                 $this->info('start this incomes process');
-                $incomes = Income::latestDate()->get();
+                $incomes = Income::whereNull('account_id')->latestDate()->get();
                 $this->setAccountIdInTables($incomes, $accountIds);
                 $this->info("\n" . 'Done');
                 break;
             case 'Order':
                 $this->info('start this orders process');
-                $orders = Order::latestDate()->get();
+                $orders = Order::whereNull('account_id')->latestDate()->get();
                 $this->setAccountIdInTables($orders, $accountIds);
                 $this->info("\n" . 'Done');
                 break;
             case 'Sale':
                 $this->info('start this sales process');
-                $sales = Sale::latestDate()->get();
+                $sales = Sale::whereNull('account_id')->latestDate()->get();
                 $this->setAccountIdInTables($sales, $accountIds);
                 $this->info("\n" . 'Done');
                 break;
@@ -73,6 +73,10 @@ class SetAccountIdInTablesCommand extends Command
 
     private function setAccountIdInTables($entities, Collection $accountIds)
     {
+        if ($entities->IsEmpty()) {
+            $this->info('Everyone has an account id.');
+            exit();
+        }
         $this->withProgressBar(
             $entities,
             function (Model $entity) use ($accountIds) {
